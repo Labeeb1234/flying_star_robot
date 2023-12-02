@@ -1,0 +1,7 @@
+bool transform
+float64 angle
+float64 torque
+
+---
+bool success   # indicate successful run of triggered service
+string message # informational, e.g. for error messages 
