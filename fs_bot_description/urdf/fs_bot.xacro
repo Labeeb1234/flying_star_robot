@@ -1,0 +1,791 @@
+<?xml version="1.0" ?>
+<robot name="fs_bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find fs_bot_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find fs_bot_description)/urdf/fs_bot.trans" />
+<xacro:include filename="$(find fs_bot_description)/urdf/fs_bot.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.007571869047072704 -0.00016152471900191312 0.036280217609948026" rpy="0 0 0"/>
+    <mass value="1.0059973901812376"/>
+    <inertia ixx="0.00168" iyy="0.008545" izz="0.008471" ixy="2e-06" iyz="1e-06" ixz="0.000175"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ultrasonic_1_1">
+  <inertial>
+    <origin xyz="-1.7826697198491948e-05 6.853199746267687e-08 -0.001621573135525474" rpy="0 0 0"/>
+    <mass value="0.020157969134118457"/>
+    <inertia ixx="4e-06" iyy="1e-06" izz="4e-06" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.123239 0.0 -0.0095" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/ultrasonic_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.123239 0.0 -0.0095" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/ultrasonic_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ultrasonic_2_1">
+  <inertial>
+    <origin xyz="1.7386291992535496e-05 6.853199728973652e-08 -0.0016215731355255399" rpy="0 0 0"/>
+    <mass value="0.020157969134118832"/>
+    <inertia ixx="4e-06" iyy="1e-06" izz="4e-06" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.125 0.0 -0.0095" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/ultrasonic_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.125 0.0 -0.0095" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/ultrasonic_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="imu_link">
+  <inertial>
+    <origin xyz="-5.7880600094067924e-08 9.739392775881951e-07 0.00250014404383829" rpy="0 0 0"/>
+    <mass value="0.046625356642602804"/>
+    <inertia ixx="4e-06" iyy="5e-06" izz="9e-06" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.00445 0.000361 -0.104939" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/imu_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.00445 0.000361 -0.104939" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/imu_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm_link_left_1">
+  <inertial>
+    <origin xyz="-0.1428377228286246 0.058929160039874376 0.021300849529735964" rpy="0 0 0"/>
+    <mass value="0.8445351612998211"/>
+    <inertia ixx="0.006565" iyy="0.0131" izz="0.018523" ixy="-3e-05" iyz="-0.001174" ixz="-1.3e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.138232 -0.064 -0.02" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/arm_link_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.138232 -0.064 -0.02" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/arm_link_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm_link_right_1">
+  <inertial>
+    <origin xyz="-0.14284512463737475 -0.058924861867011846 0.021300399200247292" rpy="0 0 0"/>
+    <mass value="0.8444903587044942"/>
+    <inertia ixx="0.006565" iyy="0.013099" izz="0.018522" ixy="2.9e-05" iyz="0.001174" ixz="-1.3e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.138232 0.064637 -0.02" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/arm_link_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.138232 0.064637 -0.02" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/arm_link_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="track_pulley_left_1">
+  <inertial>
+    <origin xyz="2.7876095501453563e-07 -2.9271255461149615e-07 0.02132921258113743" rpy="0 0 0"/>
+    <mass value="0.8358355047423307"/>
+    <inertia ixx="0.000307" iyy="0.000307" izz="0.000445" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.004036 -0.069595 -0.0465" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/track_pulley_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.004036 -0.069595 -0.0465" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/track_pulley_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="track_pulley_right_1">
+  <inertial>
+    <origin xyz="2.7876095387655703e-07 2.927125502261152e-07 0.021329212581137395" rpy="0 0 0"/>
+    <mass value="0.8358355047423313"/>
+    <inertia ixx="0.000307" iyy="0.000307" izz="0.000445" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.004036 0.070232 -0.0459" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/track_pulley_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.004036 0.070232 -0.0459" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/track_pulley_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="track_support_fl_1">
+  <inertial>
+    <origin xyz="-1.8222479994112195e-06 -1.2190745093676458e-06 -0.0017623264611049266" rpy="0 0 0"/>
+    <mass value="0.23025526483312964"/>
+    <inertia ixx="0.001209" iyy="0.001209" izz="0.002348" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.134964 -0.204 -0.0703" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/track_support_fl_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.134964 -0.204 -0.0703" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/track_support_fl_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="track_support_rl_1">
+  <inertial>
+    <origin xyz="2.2994083317406933e-06 -1.217247173890268e-06 -0.0017759614126644646" rpy="0 0 0"/>
+    <mass value="0.23034535568638667"/>
+    <inertia ixx="0.001209" iyy="0.001209" izz="0.002348" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.143036 -0.204 -0.0703" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/track_support_rl_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.143036 -0.204 -0.0703" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/track_support_rl_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="track_support_fr_1">
+  <inertial>
+    <origin xyz="-1.8222647101551193e-06 1.2193703985696747e-06 -0.0017623264838048242" rpy="0 0 0"/>
+    <mass value="0.2302552653293439"/>
+    <inertia ixx="0.001209" iyy="0.001209" izz="0.002348" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.134964 0.204637 -0.0703" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/track_support_fr_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.134964 0.204637 -0.0703" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/track_support_fr_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="track_support_rr_1">
+  <inertial>
+    <origin xyz="2.299408277200987e-06 1.217425781907533e-06 -0.0017759614132562274" rpy="0 0 0"/>
+    <mass value="0.23034535569885076"/>
+    <inertia ixx="0.001209" iyy="0.001209" izz="0.002348" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.143036 0.204637 -0.0703" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/track_support_rr_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.143036 0.204637 -0.0703" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/track_support_rr_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="bldc_motor_1_1">
+  <inertial>
+    <origin xyz="-3.13401487095355e-07 5.924505283028125e-07 0.013696512860461751" rpy="0 0 0"/>
+    <mass value="0.10785871798850041"/>
+    <inertia ixx="1.1e-05" iyy="1.1e-05" izz="1e-05" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.134964 -0.204 -0.0773" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/bldc_motor_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.134964 -0.204 -0.0773" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/bldc_motor_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="propeller_1_1">
+  <inertial>
+    <origin xyz="-4.909743015396595e-06 -9.120790755434705e-06 0.002979288442366501" rpy="0 0 0"/>
+    <mass value="0.004466869702984192"/>
+    <inertia ixx="3e-06" iyy="3e-06" izz="6e-06" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.134964 -0.204 -0.1062" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/propeller_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.134964 -0.204 -0.1062" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/propeller_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="bldc_motor_2_1">
+  <inertial>
+    <origin xyz="8.709233691173157e-07 5.924504642706996e-07 0.013696512860478446" rpy="0 0 0"/>
+    <mass value="0.1078587179885"/>
+    <inertia ixx="1.1e-05" iyy="1.1e-05" izz="1e-05" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.143036 -0.204 -0.0773" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/bldc_motor_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.143036 -0.204 -0.0773" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/bldc_motor_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="propeller_2_1">
+  <inertial>
+    <origin xyz="-4.909743039738235e-06 9.120790688516012e-06 0.004270711557639362" rpy="0 0 0"/>
+    <mass value="0.004466869702984191"/>
+    <inertia ixx="3e-06" iyy="3e-06" izz="6e-06" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.143036 -0.204 -0.1062" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/propeller_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.143036 -0.204 -0.1062" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/propeller_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="bldc_motor_3_1">
+  <inertial>
+    <origin xyz="-2.9992360750519254e-07 -5.783959688976381e-07 0.013696512860461599" rpy="0 0 0"/>
+    <mass value="0.1078587179884996"/>
+    <inertia ixx="1.1e-05" iyy="1.1e-05" izz="1e-05" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.134964 0.204637 -0.0773" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/bldc_motor_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.134964 0.204637 -0.0773" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/bldc_motor_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="propeller_3_1">
+  <inertial>
+    <origin xyz="-4.909743015396595e-06 9.120790755351438e-06 0.004270711557622722" rpy="0 0 0"/>
+    <mass value="0.004466869702984214"/>
+    <inertia ixx="3e-06" iyy="3e-06" izz="6e-06" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.134964 0.204637 -0.1062" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/propeller_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.134964 0.204637 -0.1062" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/propeller_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="bldc_motor_4_1">
+  <inertial>
+    <origin xyz="8.574454892773531e-07 -5.783959054761478e-07 0.013696512860478752" rpy="0 0 0"/>
+    <mass value="0.10785871798849818"/>
+    <inertia ixx="1.1e-05" iyy="1.1e-05" izz="1e-05" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.143036 0.204637 -0.0773" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/bldc_motor_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.143036 0.204637 -0.0773" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/bldc_motor_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="propeller_4_1">
+  <inertial>
+    <origin xyz="-4.909743040348857e-06 -9.120790688543767e-06 0.002979288442383196" rpy="0 0 0"/>
+    <mass value="0.004466869702984186"/>
+    <inertia ixx="3e-06" iyy="3e-06" izz="6e-06" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.143036 0.204637 -0.1062" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/propeller_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.143036 0.204637 -0.1062" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find fs_bot_description)/meshes/propeller_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rigid 1" type="fixed">
+  <origin xyz="0.123239 0.0 0.0095" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="ultrasonic_1_1"/>
+</joint>
+
+<joint name="Rigid 2" type="fixed">
+  <origin xyz="-0.125 0.0 0.0095" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="ultrasonic_2_1"/>
+</joint>
+
+<joint name="Rigid 3" type="fixed">
+  <origin xyz="-0.00445 -0.000361 0.104939" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="imu_link"/>
+</joint>
+
+<joint name="arm_base_left_joint" type="revolute">
+  <origin xyz="0.138232 0.064 0.02" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="arm_link_left_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <limit effort="1000.0" lower="${-pi/2}" upper="0.0" velocity="0.1"/>
+</joint>
+
+<joint name="arm_base_right_joint" type="revolute">
+  <origin xyz="0.138232 -0.064637 0.02" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="arm_link_right_1"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+  <limit effort="1000.0" lower="${-pi/2}" upper="0.0" velocity="0.1"/>
+</joint>
+
+<joint name="pulley_left_joint" type="continuous">
+  <origin xyz="-0.142268 0.005595 0.0265" rpy="0 0 0"/>
+  <parent link="arm_link_left_1"/>
+  <child link="track_pulley_left_1"/>
+  <axis xyz="-0.0 -0.0 1.0"/>
+</joint>
+
+<joint name="puller_right_joint" type="continuous">
+  <origin xyz="-0.142268 -0.005595 0.0259" rpy="0 0 0"/>
+  <parent link="arm_link_right_1"/>
+  <child link="track_pulley_right_1"/>
+  <axis xyz="0.0 -0.0 -1.0"/>
+</joint>
+
+<joint name="armshield_fl_joint" type="continuous">
+  <origin xyz="-0.003268 0.14 0.0503" rpy="0 0 0"/>
+  <parent link="arm_link_left_1"/>
+  <child link="track_support_fl_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+</joint>
+
+<joint name="armshield_rl_joint" type="continuous">
+  <origin xyz="-0.281268 0.14 0.0503" rpy="0 0 0"/>
+  <parent link="arm_link_left_1"/>
+  <child link="track_support_rl_1"/>
+  <axis xyz="-0.0 -0.0 -1.0"/>
+</joint>
+
+<joint name="armshield_fr_joint" type="continuous">
+  <origin xyz="-0.003268 -0.14 0.0503" rpy="0 0 0"/>
+  <parent link="arm_link_right_1"/>
+  <child link="track_support_fr_1"/>
+  <axis xyz="-0.0 0.0 -1.0"/>
+</joint>
+
+<joint name="armshield_rr_joint" type="continuous">
+  <origin xyz="-0.281268 -0.14 0.0503" rpy="0 0 0"/>
+  <parent link="arm_link_right_1"/>
+  <child link="track_support_rr_1"/>
+  <axis xyz="0.0 -0.0 1.0"/>
+</joint>
+
+<joint name="Rigid 12" type="fixed">
+  <origin xyz="-0.003268 0.14 0.0573" rpy="0 0 0"/>
+  <parent link="arm_link_left_1"/>
+  <child link="bldc_motor_1_1"/>
+</joint>
+
+<joint name="prop_1_joint" type="continuous">
+  <origin xyz="0.0 0.0 0.0289" rpy="0 0 0"/>
+  <parent link="bldc_motor_1_1"/>
+  <child link="propeller_1_1"/>
+  <axis xyz="-0.0 -0.0 -1.0"/>
+</joint>
+
+<joint name="Rigid 14" type="fixed">
+  <origin xyz="-0.281268 0.14 0.0573" rpy="0 0 0"/>
+  <parent link="arm_link_left_1"/>
+  <child link="bldc_motor_2_1"/>
+</joint>
+
+<joint name="prop_2_joint" type="continuous">
+  <origin xyz="0.0 0.0 0.0289" rpy="0 0 0"/>
+  <parent link="bldc_motor_2_1"/>
+  <child link="propeller_2_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+</joint>
+
+<joint name="Rigid 16" type="fixed">
+  <origin xyz="-0.003268 -0.14 0.0573" rpy="0 0 0"/>
+  <parent link="arm_link_right_1"/>
+  <child link="bldc_motor_3_1"/>
+</joint>
+
+<joint name="prop_3_joint" type="continuous">
+  <origin xyz="0.0 0.0 0.0289" rpy="0 0 0"/>
+  <parent link="bldc_motor_3_1"/>
+  <child link="propeller_3_1"/>
+  <axis xyz="0.0 -0.0 1.0"/>
+</joint>
+
+<joint name="Rigid 18" type="fixed">
+  <origin xyz="-0.281268 -0.14 0.0573" rpy="0 0 0"/>
+  <parent link="arm_link_right_1"/>
+  <child link="bldc_motor_4_1"/>
+</joint>
+
+<joint name="prop_4_joint" type="continuous">
+  <origin xyz="0.0 0.0 0.0289" rpy="0 0 0"/>
+  <parent link="bldc_motor_4_1"/>
+  <child link="propeller_4_1"/>
+  <axis xyz="-0.0 0.0 -1.0"/>
+</joint>
+
+<!-- dummy parameters -->
+<!-- <link name="dummy_arm_link_left">
+  <inertial>
+    <origin xyz="-0.1428377228286246 0.058929160039874376 0.021300849529735964" rpy="0 0 0"/>
+    <mass value="0.8445351612998211"/>
+    <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+</link>
+
+<link name="dummy_arm_link_right">
+  <inertial>
+    <origin xyz="-0.14284512463737475 -0.058924861867011846 0.021300399200247292" rpy="0 0 0"/>
+    <mass value="0.8444903587044942"/>
+    <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+</link>
+
+<joint name="left_dummy_joint" type="continuous">
+  <origin xyz="0.138232 0.064 0.02" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="dummy_arm_link_left"/>
+  <axis xyz="-1.0 -0.0 -0.0"/>
+</joint>
+
+<joint name="right_dummy_joint" type="continuous">
+  <origin xyz="0.138232 -0.064637 0.02" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="dummy_arm_link_right"/>
+  <axis xyz="1.0 -0.0 0.0"/>
+</joint> -->
+
+<!--  transformation control plugin setup  -->
+<gazebo>
+  <plugin name="left_force" filename="libgazebo_ros_force.so" >
+      <ros>
+          <namespace>/fs_bot</namespace>
+          <remapping>gazebo_ros_force:=left_arm_force</remapping>
+      </ros>
+      <link_name>arm_link_left_1</link_name>
+      <!-- not to be changed -->
+      <force_frame>link</force_frame> 
+  </plugin>
+</gazebo>
+
+<gazebo>
+  <plugin name="right_force" filename="libgazebo_ros_force.so" >
+      <ros>
+          <namespace>/fs_bot</namespace>
+          <remapping>gazebo_ros_force:=right_arm_force</remapping>
+      </ros>
+      <link_name>arm_link_right_1</link_name>
+      <!-- not to be changed -->
+      <force_frame>link</force_frame> 
+  </plugin>
+</gazebo>
+
+    <!-- For Drone controlling -->
+<gazebo>
+  <plugin name="drone_base_stabilizer" filename="libgazebo_ros_force.so" >
+      <ros>
+          <namespace>/fs_bot</namespace>
+          <remapping>gazebo_ros_force:=drone_stabilizer</remapping>
+      </ros>
+      <link_name>base_link</link_name>
+      <!-- not to be changed -->
+      <force_frame>link</force_frame> 
+  </plugin>
+</gazebo>
+
+
+<gazebo>
+  <plugin name="drone_motor_controller_fl" filename="libgazebo_ros_force.so" >
+      <ros>
+          <namespace>/fs_bot</namespace>
+          <remapping>gazebo_ros_force:=drone_motor_1</remapping>
+      </ros>
+      <link_name>propeller_1_1</link_name>
+      <!-- not to be changed -->
+      <force_frame>link</force_frame> 
+  </plugin>
+</gazebo>
+
+<gazebo>
+  <plugin name="drone_motor_controller_rl" filename="libgazebo_ros_force.so" >
+      <ros>
+          <namespace>/fs_bot</namespace>
+          <remapping>gazebo_ros_force:=drone_motor_2</remapping>
+      </ros>
+      <link_name>propeller_2_1</link_name>
+      <!-- not to be changed -->
+      <force_frame>link</force_frame> 
+  </plugin>
+</gazebo>
+
+<gazebo>
+  <plugin name="drone_motor_controller_fr" filename="libgazebo_ros_force.so" >
+      <ros>
+          <namespace>/fs_bot</namespace>
+          <remapping>gazebo_ros_force:=drone_motor_3</remapping>
+      </ros>
+      <link_name>propeller_3_1</link_name>
+      <!-- not to be changed -->
+      <force_frame>link</force_frame> 
+  </plugin>
+</gazebo>
+
+<gazebo>
+  <plugin name="drone_motor_controller_rr" filename="libgazebo_ros_force.so" >
+      <ros>
+          <namespace>/fs_bot</namespace>
+          <remapping>gazebo_ros_force:=drone_motor_4</remapping>
+      </ros>
+      <link_name>propeller_4_1</link_name>
+      <!-- not to be changed -->
+      <force_frame>link</force_frame> 
+  </plugin>
+</gazebo>
+
+
+<!-- make shift joint sensor plugins -->
+<gazebo>
+    <plugin name="p3d_left_arm_pose" filename="libgazebo_ros_p3d.so">
+      <topic_name>odom</topic_name>
+      <ros>
+          <namespace>/fs_bot</namespace>
+          <remapping>odom:=left_arm_pose</remapping>
+      </ros>
+      <always_on>true</always_on>
+      <update_rate>100.0</update_rate>
+      <body_name>arm_link_left_1</body_name>
+      <gaussian_noise>0.00001</gaussian_noise>
+      <frame_name>world</frame_name>
+    </plugin>
+</gazebo>
+
+<gazebo>
+    <plugin name="p3d_right_arm_pose" filename="libgazebo_ros_p3d.so">
+      <topic_name>odom</topic_name>
+      <ros>
+          <namespace>/fs_bot</namespace>
+          <remapping>odom:=right_arm_pose</remapping>
+      </ros>
+      <always_on>true</always_on>
+      <update_rate>100.0</update_rate>
+      <body_name>arm_link_right_1</body_name>
+      <gaussian_noise>0.00001</gaussian_noise>
+      <frame_name>world</frame_name>
+    </plugin>
+</gazebo>
+
+<!-- Mobile robot controller plugin setup -->
+<gazebo>
+    <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
+        <ros>
+            <namespace>/fs_bot</namespace>
+            <remapping>cmd_vel:=cmd_vel</remapping>
+            <remapping>odom:=odom_pose</remapping>
+        </ros>
+        <robotBaseFrame>base_link</robotBaseFrame>
+    </plugin>
+</gazebo>
+
+<gazebo>
+  <plugin name="shield_controller_fl" filename="libgazebo_ros_force.so" >
+      <ros>
+          <namespace>/fs_bot</namespace>
+          <remapping>gazebo_ros_force:=shield_motion_1</remapping>
+      </ros>
+      <link_name>track_support_fl_1</link_name>
+      <!-- not to be changed -->
+      <force_frame>link</force_frame> 
+  </plugin>
+</gazebo>
+
+<gazebo>
+  <plugin name="shield_controller_rl" filename="libgazebo_ros_force.so" >
+      <ros>
+          <namespace>/fs_bot</namespace>
+          <remapping>gazebo_ros_force:=shield_motion_2</remapping>
+      </ros>
+      <link_name>track_support_rl_1</link_name>
+      <!-- not to be changed -->
+      <force_frame>link</force_frame> 
+  </plugin>
+</gazebo>
+
+<gazebo>
+  <plugin name="shield_controller_fr" filename="libgazebo_ros_force.so" >
+      <ros>
+          <namespace>/fs_bot</namespace>
+          <remapping>gazebo_ros_force:=shield_motion_3</remapping>
+      </ros>
+      <link_name>track_support_fr_1</link_name>
+      <!-- not to be changed -->
+      <force_frame>link</force_frame> 
+  </plugin>
+</gazebo>
+
+<gazebo>
+  <plugin name="shield_controller_rr" filename="libgazebo_ros_force.so" >
+      <ros>
+          <namespace>/fs_bot</namespace>
+          <remapping>gazebo_ros_force:=shield_motion_4</remapping>
+      </ros>
+      <link_name>track_support_rr_1</link_name>
+      <!-- not to be changed -->
+      <force_frame>link</force_frame> 
+  </plugin>
+</gazebo>
+
+
+<!--  Bot IMU sensor  -->
+<gazebo reference="imu_link">
+  <gravity>true</gravity>
+  <sensor name="imu_sensor" type="imu">
+    <always_on>true</always_on>
+    <update_rate>100</update_rate>
+    <visualize>true</visualize>
+    <topic>__default_topic__</topic>
+    <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+      <ros>
+        <remapping>~/out:=/imu</remapping>
+      </ros>
+      <!-- <topicName>imu</topicName> -->
+      <bodyName>imu_link</bodyName>
+      <updateRateHZ>10.0</updateRateHZ>
+      <gaussianNoise>0.0</gaussianNoise>
+      <xyzOffset>0 0 0</xyzOffset>
+      <rpyOffset>0 0 0</rpyOffset>
+      <frameName>imu_link</frameName>
+      <initial_orientation_as_reference>false</initial_orientation_as_reference>
+    </plugin>
+    <pose>0 0 0 0 0 0</pose>
+  </sensor>
+</gazebo>
+
+</robot>
