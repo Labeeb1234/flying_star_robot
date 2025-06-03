@@ -2,7 +2,7 @@
 
 ## 📋 Project Overview
 Innovative BTech project developing a transformable unmanned aerial vehicle (UAV) that converts to an unmanned ground vehicle (UGV), tested and developed in Ubuntu 22.04. (this repo contains the packages for the simulation).
-We also worked on the hardware for this project (pics and demos video yet to be put up); currently applied for a design patent (India) awaiting results.....🤞
+We also worked on the hardware for this project (pics and demo videos yet to be put up); currently applied for a design patent (India) awaiting results.....🤞
 
 ## 🛠 System Requirements
 - **Operating System**: Ubuntu 22.04
